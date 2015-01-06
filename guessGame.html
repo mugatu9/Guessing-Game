@@ -1,0 +1,45 @@
+<script>
+alert("The object of this guessing is to guess how many times you will be able to correctly guess a random number between 1 and 5 within 5 tries. You will be asked your initial guess first, and then you'll guess a random number between 1 and 5 5 times. You will then recieve a message informing you of your win or your loss!");
+
+var counter = 0;
+var initialGuess = prompt("If you have 5 guesses, how many times can you correctly guess a random number between 1 and 5?");
+
+Number(initialGuess);
+
+while(isNaN(initialGuess) || initialGuess === "" || initialGuess > 5) {
+    alert("You can only guess a number between 0 and 5! Please guess again!");
+    initialGuess = prompt("If you have 5 guesses, how many times can you correctly guess a random number between 1 and 5?");
+
+Number(initialGuess);
+}
+for (i = 0; i < 5; i++) {
+  var guess = prompt("Guess a number!");
+  Number(guess);
+  while (isNaN(guess) || guess === "" || guess > 5 || guess < 1) {
+    alert("You can only guess a number between 1 and 5! Please guess again!");
+    guess = prompt("Guess a number!");
+    Number(guess);
+  }
+
+  var answer = Math.floor(Math.random() * 5 + 1);
+  var message;
+
+  if (guess == answer) {
+    message = "Nice! You guessed correctly!";
+    counter++;
+  }
+  else {
+    message = "Wrong! You guessed incorrectly! The answer was " + answer + "! Too bad, so sad...";
+  }
+
+  alert(message);
+}
+
+if(initialGuess === counter) {
+  alert("Congratulations! You correctly guessed that that you would guess correctly " + counter + " out of five times! And that statement totally doesn't sound confusing at all.")
+}
+else {
+  alert("What a shame! You guessed correctly " + counter + " out of five times, but you predicted you'd guess correctly " + initialGuess + " out of five times. Oh, the Calamity!")
+}
+
+</script>
